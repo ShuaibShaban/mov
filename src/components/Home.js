@@ -1,32 +1,40 @@
 import React, { useState, useEffect } from 'react';
-import Header from '../components/Header';
-import MovieCard from '../components/MovieCard';
-import './index.css';
+import axios from 'axios';
+import Navbar from './Navbar';
+import MovieCard from './MovieCard';
+import AddMovieForm from './AddMovieForm';
 
-function Home() {
+const Home = () => {
   const [movies, setMovies] = useState([]);
+  const [showForm, setShowForm] = useState(false);
 
   useEffect(() => {
-    fetch('https://api.npoint.io/93283219ac06a89cfbee/movies/')
-      .then((response) => response.json())
-      .then((data) => setMovies(data))
-      .catch((error) => console.log(error));
+    axios.get('https://api.npoint.io/93283219ac06a89cfbee/movies/')
+      .then(response => {
+        setMovies(response.data);
+      })
+      .catch(error => {
+        console.log(error);
+      });
   }, []);
 
+  const handleFormShow = () => {
+    setShowForm(true);
+  }
+
+  const handleFormClose = () => {
+    setShowForm(false);
+  }
+
   return (
-    <div className="home-component">
-      <Header />
-      <div className="movie-grid">
-        {movies.map((movie) => (
-          <MovieCard
-            key={movie.id}
-            title={movie.title}
-            description={movie.description}
-            category={movie.category}
-            image={movie.image}
-          />
+    <div>
+      <Navbar handleFormShow={handleFormShow} handleFormClose={handleFormClose} />
+      <div className="movie-list">
+        {movies.map(movie => (
+          <MovieCard key={movie.id} title={movie.title} category={movie.category} description={movie.description} image={movie.image} />
         ))}
       </div>
+      {showForm && <AddMovieForm />}
     </div>
   );
 }

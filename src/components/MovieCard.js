@@ -1,15 +1,17 @@
 import React from 'react';
 import './index.css';
 
-function MovieCard({ title, description, category, image }) {
-  
+function MovieCard(props) {
+  const { title, category, year, description, image } = props;
+
   return (
     <div className="movie-card">
-      <img className="movie-image" src={image} alt={title} />
-      <div className="movie-info">
-        <h2 className="movie-title">{title}</h2>
-        <p className="movie-description">{description}</p>
-        <p className="movie-category">{category}</p>
+      <img src={image} alt={title} className="movie-card__image" />
+      <div className="movie-card__content">
+        <h2 className="movie-card__title">{title}</h2>
+        <p className="movie-card__category">{category}</p>
+        <p className="movie-card__year">{year}</p>
+        <p className="movie-card__description">{description}</p>
       </div>
     </div>
   );

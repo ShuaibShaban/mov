@@ -193,7 +193,7 @@ body {
   align-items: center;
   height: 100vh;
   background: #222;
-  margin-top: 1500px;
+  margin-top: 900px;
   background-image: repeating-linear-gradient(
     to bottom,
     transparent 7px,
@@ -251,47 +251,131 @@ body {
   }
 }
 
-.movie-card {
+.navbar {
+  background-color: #222;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+}
+
+.navbar .logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+.navbar .nav-items {
+  display: flex;
+  gap: 20px;
+}
+
+.navbar .nav-items a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.2rem;
+}
+
+@media only screen and (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .navbar .nav-items {
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 20px;
+  }
+
+  .navbar .nav-items a {
+    font-size: 1.5rem;
+  }
+}
+
+
+
+.add-movie-form {
   display: flex;
   flex-direction: column;
-  position: relative;
+  align-items: center;
+  margin: 2rem;
+  color: #fff;
+}
+
+.add-movie-form__input {
+  margin: 1rem;
+}
+
+.add-movie-form__label {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-right: 1rem;
+}
+
+.add-movie-form__input-field {
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+}
+
+.add-movie-form__submit-btn {
+  margin-top: 2rem;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 5px;
+  background-color: #333;
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+}
+.movie-card {
+  width: 300px;
+  height: 400px;
+  margin: 20px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
   overflow: hidden;
-  background-color: var(--white);
-  border-radius: 5px 25px 5px 50px;
-  transition: transform 0.1s linear, box-shadow 0.2s;
-  width: 20rem;
-  height: 30rem;
   display: inline-block;
-  margin: 50px;
+  vertical-align: top;
   background-color: black;
   color: white;
+  overflow-y: scroll;
 }
 
-.movie-image {
-  object-fit: cover;
-  height: 250px;
+.movie-card img {
   width: 100%;
+  height: 60%;
+  object-fit: cover;
 }
 
-.movie-info {
-  padding: 16px;
-  display: flex;
-  flex-direction: column;
-  flex: 1;
+.movie-card .content {
+  padding: 10px;
+  
+  
 }
 
-.movie-title {
-  font-size: 24px;
-  font-weight: bold;
-  margin-bottom: 8px;
+.movie-card h3 {
+  margin-top: 0;
+  margin-bottom: 5px;
+  font-size: 1.2rem;
 }
 
-.movie-description {
-  font-size: 16px;
-  margin-bottom: 8px;
+.movie-card p {
+  margin: 0;
+  font-size: 1rem;
 }
 
-.movie-category {
-  font-size: 14px;
-  color: #888;
+@media only screen and (max-width: 768px) {
+  .movie-card {
+    width: 100%;
+    display: block;
+    margin-bottom: 20px;
+  }
 }
+
+
+
+
